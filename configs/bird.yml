@@ -1,0 +1,68 @@
+config_name: bird
+
+dataset_name: birds
+data_dir: E:\mine\code\DFA-GAN\data\birds
+
+gpus: '0'
+imsize: 256
+z_dim: 100
+cond_dim: 256
+manual_seed: 100
+num_workers: 0
+
+stamp: 'normal'
+state_epoch: 0
+epochs: 2001
+batch_size: 8
+nf: 32
+ch_size: 3
+resume_epoch: 1
+resume_model_path: None
+output: ./output
+mode: 'train'
+tensorboard: True
+params: False
+
+generator:
+    lr: 0.0001
+    beta1: 0.0
+    beta2: 0.9
+
+discriminator:
+    lr: 0.0004
+    beta1: 0.0
+    beta2: 0.9
+
+print_step: 100
+
+model:
+    encoder_type: clip
+    pre_encoder: "ViT-B/32"
+    embedding_dim: 512
+    pre_clip: "ViT-B/32"
+
+gen_interval: 1
+test_interval: 10
+save_interval: 10
+
+truncation: True
+trunc_rate: 0.88
+
+sample_times: 10
+npz_path: E:\mine\code\DFA-GAN\data\birds/npz/bird_val256_FIDK0.npz
+example_captions: ./example_captions/bird.txt
+samples_save_dir: ./samples/bird/
+checkpoint:
+    load: False
+    path: None
+
+
+save_image: True
+val_save_dir: ./vals/bird/
+
+text:
+    words_num: 32
+    captions_per_image: 10
+
+ada_min:
+    flag: True
